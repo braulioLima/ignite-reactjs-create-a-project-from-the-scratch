@@ -1,7 +1,15 @@
-.home-header {
-  margin: 0 auto;
-  width: 70rem;
+%header-container {
   height: 10.5rem;
+}
+
+.home {
+  @extend %header-container;
   padding-top: 8rem;
   padding-bottom: 6.5rem;
+}
+
+.post {
+  @extend %header-container;
+  padding-top: 4.1rem;
+  padding-bottom: 4.1rem;
 }

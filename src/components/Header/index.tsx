@@ -2,10 +2,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import styles from './header.module.scss';
+import commonStyles from '../../styles/common.module.scss';
 
-export default function Header(): JSX.Element {
+interface HeaderProps {
+  currentPage: string;
+}
+
+export default function Header({ currentPage }: HeaderProps): JSX.Element {
+  const pageStyle = currentPage === '/' ? 'home' : 'post';
+
   return (
-    <header className={styles['home-header']}>
+    <header
+      className={`${commonStyles['container-wraper']} ${
+        commonStyles['content-container']
+      } ${styles[`${pageStyle}`]}`}
+    >
       <Link href="/">
         <a>
           <Image
