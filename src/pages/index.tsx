@@ -54,26 +54,32 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
         <title>Spacetraveling | Home</title>
       </Head>
 
-      <main className={styles.container}>
-        <section className={styles['post-list']}>
-          {posts.map(post => (
-            <Link href={`/post/${post.uid}`} key={post.uid}>
-              <a className={styles.post}>
-                <strong>{post.data.title}</strong>
-                <p>{post.data.subtitle}</p>
-                <footer className={styles['post-footer']}>
-                  <span>
-                    <FiCalendar width={15} height={15} />
-                    <time>{formatDate(post.first_publication_date)}</time>
-                  </span>
-                  <span>
-                    <FiUser width={15} height={15} />
-                    <p>{post.data.author}</p>
-                  </span>
-                </footer>
-              </a>
-            </Link>
-          ))}
+      <main
+        className={`${commonStyles['container-wraper']} ${styles.container}`}
+      >
+        <section className={`${commonStyles['content-container']} `}>
+          <ul className={styles['post-list']}>
+            {posts.map(post => (
+              <li className={styles['post-item']} key={post.uid}>
+                <Link href={`/post/${post.uid}`}>
+                  <a className={styles.post}>
+                    <strong>{post.data.title}</strong>
+                    <p>{post.data.subtitle}</p>
+                    <footer className={styles['post-footer']}>
+                      <span>
+                        <FiCalendar width={15} height={15} />
+                        <time>{formatDate(post.first_publication_date)}</time>
+                      </span>
+                      <span>
+                        <FiUser width={15} height={15} />
+                        <p>{post.data.author}</p>
+                      </span>
+                    </footer>
+                  </a>
+                </Link>
+              </li>
+            ))}
+          </ul>
 
           {nextPage && (
             <button type="button" onClick={() => setIsMorePostActive(true)}>
@@ -100,8 +106,6 @@ export const getStaticProps: GetStaticProps = async () => {
       pageSize: 1,
     },
   );
-
-  // console.log(postsResponse.next_page);
 
   const posts = postsResponse.results.map<Post>(post => ({
     uid: post.uid,

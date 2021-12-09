@@ -1,15 +1,9 @@
-// TODO
 .container {
-  max-width: 1120px;
-  margin: 0 auto;
   padding: 0 2rem;
 }
 
 .post-list {
-  width: 700px;
-  // border: 1px solid #ff0000;
-
-  > button {
+  & + button {
     margin-top: 6.5rem;
     border: 0;
     background: none;
@@ -19,11 +13,21 @@
   }
 }
 
+.post-item {
+  transition: color 200ms;
+
+  & + li {
+    margin-top: 2.4rem;
+    padding-top: 2.4rem;
+  }
+
+  &:hover strong {
+    color: var(--pink-500);
+  }
+}
+
 .post {
   display: block;
-  // height: 108px;
-  transition: color 200ms;
-  // border: 1px solid #00ff00;
 
   > strong {
     font-size: 2.8rem;
@@ -34,15 +38,6 @@
     margin-bottom: 0.422rem;
     line-height: 2.178;
     font-weight: 400;
-  }
-
-  & + a {
-    margin-top: 2.4rem;
-    padding-top: 2.4rem;
-  }
-
-  &:hover strong {
-    color: var(--pink-500);
   }
 }
 
