@@ -7,9 +7,9 @@ export function formatDate(strDate: string): string {
   });
 
   const dateStringSplited = dateFormated.split('-');
-  dateStringSplited[1] = dateStringSplited[1].substr(0, 3);
+  dateStringSplited[1] = dateStringSplited[1].slice(0, 3);
 
-  dateFormated = dateStringSplited.join(' ');
+  dateFormated = dateStringSplited.join(' ').trim();
 
   return dateFormated;
 }
